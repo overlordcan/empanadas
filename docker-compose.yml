@@ -7,7 +7,7 @@ services:
       MYSQL_USER: emp_user
       MYSQL_PASSWORD: emp_pass
     ports:
-      - "3306:3306"
+      - "3307:3306"  # Changed host port to 3307 to avoid conflicts
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
       interval: 10s
@@ -24,7 +24,7 @@ services:
       PMA_USER: emp_user
       PMA_PASSWORD: emp_pass
     ports:
-      - "8081:80"
+      - "8082:80"
     depends_on:
       - db
 

@@ -30,7 +30,8 @@ API_KEY=
 cp api/.env.example api/.env
 docker compose up -d --build
 ```
-
+> sudo docker compose up -d --build en caso de error de permisos
+> cambiar puertos en caso de error y volver a intentar
 
 
 ## Tests del backend
