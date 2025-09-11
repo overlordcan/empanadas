@@ -2,7 +2,7 @@
 import { jest } from '@jest/globals';
 import request from 'supertest';
 
-// 1) Prepara un pool falso
+// 1) Prepara un pool falso de oryeba
 const mockPool = {
   query: jest.fn(async (sql, params) => {
     if (/ORDER BY id DESC/.test(sql)) return [[{ id: 1, name: 'Pino', type: 'Horno' }]];
@@ -17,13 +17,13 @@ const mockPool = {
   })
 };
 
-// 2) Mockea el módulo ../src/db.js ANTES de importar app
+// 2) Mockea
 jest.unstable_mockModule('../src/db.js', () => ({
   __esModule: true,
   pool: mockPool
 }));
 
-// 3) Importa la app después de mockear el módulo
+// 3) Importa
 const { default: app } = await import('../src/app.js');
 
 test('GET lista empanadas', async () => {
